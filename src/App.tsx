@@ -78,6 +78,10 @@ function App() {
     });
   };
 
+  const handleClearOrder = () => {
+    setCurrentOrder({});
+  };
+
   useEffect(() => {
     fetchMenuItems();
   }, []);
@@ -115,6 +119,8 @@ function App() {
             <button onClick={() => handleRemoveFromOrder(item)}>remove</button>
           </div>
         ))}
+
+        <button onClick={handleClearOrder}>Send order</button>
       </section>
     </div>
   );
