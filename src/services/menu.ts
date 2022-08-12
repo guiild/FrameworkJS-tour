@@ -9,7 +9,7 @@ const getLocalStorage = (key: string) => {
     return value ? JSON.parse(value) : null;
 }
 
-export const listMenuItems: () => string[] = () => {
+export const listMenuItems: () => Promise<string[]> = async () => {
     const menuItems = getLocalStorage(LOCAL_STORAGE_KEY);
     if (menuItems) {
         return menuItems;
@@ -19,14 +19,14 @@ export const listMenuItems: () => string[] = () => {
     }
 }
 
-export const addMenuItem: (item: string) => void = (item: string) => {
-    const menuItems = listMenuItems();
+export const addMenuItem: (item: string) => Promise<void> = async (item: string) => {
+    const menuItems = await listMenuItems();
     menuItems.push(item);
     saveLocalStorage(LOCAL_STORAGE_KEY, menuItems);
 }
 
-export const removeMenuItem: (item: string) => void = (item: string) => {
-    const menuItems = listMenuItems();
+export const removeMenuItem: (item: string) => Promise<void> = async (item: string) => {
+    const menuItems = await listMenuItems();
     const index = menuItems.indexOf(item);
     if (index > -1) {
         menuItems.splice(index, 1);

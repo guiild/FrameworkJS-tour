@@ -12,19 +12,38 @@ function App() {
     setNewMenuItem(e.target.value);
   };
 
-  const handleSubmitNewMenuItem = (e: FormEvent) => {
+  const fetchMenuItems = async () => {
+    setLoading(true);
+    try {
+      const menuItems = await listMenuItems();
+      setMenuItems(menuItems);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
+  };
+
+  const handleSubmitNewMenuItem = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    addMenuItem(newMenuItem);
-    setMenuItems(listMenuItems());
+    try {
+      await addMenuItem(newMenuItem);
+      await fetchMenuItems();
+    } catch (e) {
+      console.log(e);
+    }
     setLoading(false);
     setNewMenuItem("");
   };
 
-  const handleRemoveMenuItem = (menuItem: string) => {
+  const handleRemoveMenuItem = async (menuItem: string) => {
     setLoading(true);
-    removeMenuItem(menuItem);
-    setMenuItems(listMenuItems());
+    try {
+      await removeMenuItem(menuItem);
+      await fetchMenuItems();
+    } catch (e) {
+      console.log(e);
+    }
     setLoading(false);
   };
 
@@ -60,7 +79,7 @@ function App() {
   };
 
   useEffect(() => {
-    setMenuItems(listMenuItems());
+    fetchMenuItems();
   }, []);
 
   return (
