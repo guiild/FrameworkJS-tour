@@ -20,15 +20,18 @@ export const listMenuItems: () => Promise<string[]> = async () => {
         return menuItems;
     } else {
         saveLocalStorage(LOCAL_STORAGE_KEY, DEFAULT_MENU);
-        return [];
+        return [...DEFAULT_MENU];
     }
 }
 
 export const addMenuItem: (item: string) => Promise<void> = async (item: string) => {
     await sleep(TIMEOUT);
     const menuItems = await listMenuItems();
-    menuItems.push(item);
-    saveLocalStorage(LOCAL_STORAGE_KEY, menuItems);
+    const index = menuItems.indexOf(item);
+    if (index === -1) {
+        menuItems.push(item);
+        saveLocalStorage(LOCAL_STORAGE_KEY, menuItems);
+    }
 }
 
 export const removeMenuItem: (item: string) => Promise<void> = async (item: string) => {
