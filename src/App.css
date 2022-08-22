@@ -1,0 +1,27 @@
+.App {
+  margin: auto;
+  width: 80%;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 0.2em;
+}
+
+.menu form {
+  margin-bottom: 2em;
+}
+
+.menu form input {
+  margin-right: 2em;
+  padding: 0.5em;
+}
+
+.list-item span {
+  display: inline-block;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  min-width: 200px;
+  border-bottom: 1px solid #ccc;
+}

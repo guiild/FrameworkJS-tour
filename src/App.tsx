@@ -88,7 +88,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Multi App</h1>
+      <h1>Framework JS Tour</h1>
+      <h2>React</h2>
       <section className="menu">
         <form onSubmit={handleSubmitNewMenuItem}>
           <input
@@ -102,20 +103,20 @@ function App() {
           />
           <button type="submit">Add</button>
         </form>
-        <div>
-          {menuItems.map((item) => (
-            <div key={item}>
-              <button onClick={() => handleAddToOrder(item)}>{item}</button>
-              <button onClick={() => handleRemoveMenuItem(item)}>Delete</button>
-            </div>
-          ))}
-        </div>
+        {menuItems.map((item) => (
+          <div className="list-item" key={item}>
+            <span>{item}</span>
+            <button onClick={() => handleAddToOrder(item)}>Add</button>
+            <button onClick={() => handleRemoveMenuItem(item)}>Delete</button>
+          </div>
+        ))}
       </section>
       <section className="command">
         <h2>Current command</h2>
         {Object.keys(currentOrder).map((item) => (
-          <div key={item}>
-            {item} {currentOrder[item]}
+          <div className="list-item" key={item}>
+            <span>{item}</span>
+            {currentOrder[item]}
             <button onClick={() => handleRemoveFromOrder(item)}>remove</button>
           </div>
         ))}
