@@ -28,3 +28,10 @@ const add = () => {
   newItemName.value = ''
 }
 </script>
+
+<style scoped>
+input {
+  padding: 0.5em;
+  min-width: 183px;
+}
+</style>

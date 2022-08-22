@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="menu">
     <NewMenuItem></NewMenuItem>
     <MenuItem
       v-for="menuItem in menu"
@@ -20,3 +20,9 @@ interface Props {
 
 defineProps<Props>()
 </script>
+
+<style scoped>
+.menu form {
+  margin-bottom: 2em;
+}
+</style>

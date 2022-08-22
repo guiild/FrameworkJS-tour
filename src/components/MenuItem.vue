@@ -1,6 +1,7 @@
 <template>
   <ListItem @remove="remove">
-    <button @click="addToCommand">{{menuItem}}</button>
+    <span>{{menuItem}}</span>
+    <button @click="addToCommand">Add</button>
   </ListItem>
 </template>
 
@@ -29,3 +30,13 @@ const addToCommand = () => {
 
 
 </script>
+
+<style scoped>
+span {
+  display: inline-block;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  min-width: 200px;
+  border-bottom: 1px solid #ccc;
+}
+</style>
