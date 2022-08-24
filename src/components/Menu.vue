@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <NewMenuItem></NewMenuItem>
-    <MenuItem
-      v-for="menuItem in menu"
-      :key="menuItem"
-      :menu-item="menuItem"
-    ></MenuItem>
-  </div>
+  <NewMenuItem></NewMenuItem>
+  <MenuItem
+    v-for="menuItem in menu"
+    :key="menuItem"
+    :menu-item="menuItem"
+  ></MenuItem>
 </template>
 
 <script setup lang="ts">
@@ -20,9 +18,3 @@ interface Props {
 
 defineProps<Props>()
 </script>
-
-<style scoped>
-.menu form {
-  margin-bottom: 2em;
-}
-</style>

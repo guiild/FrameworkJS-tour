@@ -12,24 +12,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { useMenuStore } from "../stores/menu.store"
+import { useMenu } from "../composables/use-menu"
 
-const menuStore = useMenuStore()
-
-const newItemName = ref("")
-
-const add = () => {
-  if (!newItemName.value) {
-    return
-  }
-
-  menuStore.add(newItemName.value)
-  newItemName.value = ''
-}
+const { add, newItemName } = useMenu()
 </script>
 
 <style scoped>
+form {
+  margin-bottom: 2em;
+}
+
 input {
   padding: 0.5em;
   min-width: 183px;
