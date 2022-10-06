@@ -1,0 +1,45 @@
+:root {
+  --primary: #2a6cad;
+  --primary-2: #5a9cdd;
+}
+
+* {
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  line-height: 1.25;
+  margin: 0;
+  padding: 0;
+  text-decoration: inherit;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, sans-serif;
+  gap: 1rem;
+  min-height: 100%;
+}
+
+h1 { 
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+button {
+  background-color: var(--primary);
+  border: 2px solid transparent;
+  border-radius: 0.25rem;
+  color: white;
+  padding: 0.25rem 0.5rem;
+}
+
+button:is(:active, :focus, :hover) {
+  background-color: var(--primary-2);
+  color: black;
+}
