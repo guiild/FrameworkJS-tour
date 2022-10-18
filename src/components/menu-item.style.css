@@ -1,0 +1,7 @@
+span {
+  display: inline-block;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  min-width: 200px;
+  border-bottom: 1px solid #ccc;
+}

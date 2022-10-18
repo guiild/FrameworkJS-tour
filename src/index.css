@@ -1,4 +1,10 @@
 :root {
-  width: 100%;
   height: 100%;
+  background-color: #f2f2f2;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 0.2em;
 }
