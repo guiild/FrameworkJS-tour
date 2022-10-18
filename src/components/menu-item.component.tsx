@@ -9,13 +9,17 @@ interface Props {
 }
 
 function MenuItem({ menuItem }: Props) {
+  const [menuState, { remove }] = useContext(MenuContext)
   const [_, { add }] = useContext(OrderContext)
+
+  const addOrderItem = () => add(menuItem)
+  const removeMenuItem = () => remove(menuItem)
 
   return (
     <div class="menu-item-wrapper">
       <span>{menuItem}</span>
-      <button onClick={() => add(menuItem)}>Add</button>
-      <button>Delete</button>
+      <button onClick={addOrderItem}>Add</button>
+      <button onClick={removeMenuItem}>Delete</button>
     </div>
   )
 }

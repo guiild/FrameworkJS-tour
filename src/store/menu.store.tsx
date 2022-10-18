@@ -1,6 +1,6 @@
 import { createContext, ParentComponent } from "solid-js"
 import { createStore } from "solid-js/store"
-import { addMenuItem, listMenuItems } from "../services/menu"
+import { addMenuItem, listMenuItems, removeMenuItem } from "../services/menu"
 import { MenuItem } from "../services/model"
 
 interface State {
@@ -9,12 +9,16 @@ interface State {
 
 type Context = [
   state: State,
-  actions: { add: (itemName: string) => void; load: () => void },
+  actions: {
+    add: (itemName: string) => void
+    load: () => void
+    remove: (itemName: string) => void
+  },
 ]
 
 export const MenuContext = createContext<Context>([
   { items: [] },
-  { add: () => {}, load: () => {} },
+  { add: () => {}, load: () => {}, remove: () => {} },
 ])
 
 export const MenuProvider: ParentComponent = (props) => {
@@ -31,6 +35,10 @@ export const MenuProvider: ParentComponent = (props) => {
       },
       add: async (itemName) => {
         await addMenuItem(itemName)
+        setState("items", await listMenuItems())
+      },
+      remove: async (itemName) => {
+        await removeMenuItem(itemName)
         setState("items", await listMenuItems())
       },
     },
